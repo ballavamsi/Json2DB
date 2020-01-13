@@ -1,0 +1,6 @@
+C:\Users\vamsi.balla\source\repos\Json2DB\Json2DB\bin\Debug\netcoreapp2.2\Json2DB.deps.json
+C:\Users\vamsi.balla\source\repos\Json2DB\Json2DB\bin\Debug\netcoreapp2.2\Json2DB.dll
+C:\Users\vamsi.balla\source\repos\Json2DB\Json2DB\obj\Debug\netcoreapp2.2\Json2DB.csprojAssemblyReference.cache
+C:\Users\vamsi.balla\source\repos\Json2DB\Json2DB\obj\Debug\netcoreapp2.2\Json2DB.csproj.CoreCompileInputs.cache
+C:\Users\vamsi.balla\source\repos\Json2DB\Json2DB\obj\Debug\netcoreapp2.2\Json2DB.AssemblyInfoInputs.cache
+C:\Users\vamsi.balla\source\repos\Json2DB\Json2DB\obj\Debug\netcoreapp2.2\Json2DB.AssemblyInfo.cs
