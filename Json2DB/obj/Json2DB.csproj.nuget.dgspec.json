@@ -47,6 +47,12 @@
               "version": "[2.2.0, )",
               "autoReferenced": true
             },
+            "NuGet.CommandLine": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[4.4.1, )"
+            },
             "mysql.data": {
               "target": "Package",
               "version": "[8.0.18, )"

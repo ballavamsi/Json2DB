@@ -288,6 +288,9 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "NuGet.CommandLine/4.4.1": {
+        "type": "package"
+      },
       "runtime.native.System/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -1825,6 +1828,19 @@
         "newtonsoft.json.12.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "NuGet.CommandLine/4.4.1": {
+      "sha512": "c6HpeBpZx1bwKXUFnZhwlBzzPYcf/ETPxEPeNlh/4s4MAfp8WOqcIuAjTCrARBP6uyZiloukjch8whyzyPDdtQ==",
+      "type": "package",
+      "path": "nuget.commandline/4.4.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "nuget.commandline.4.4.1.nupkg.sha512",
+        "nuget.commandline.nuspec",
+        "tools/NuGet.exe"
       ]
     },
     "runtime.native.System/4.0.0": {
@@ -4753,6 +4769,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.NETCore.App >= 2.2.0",
+      "NuGet.CommandLine >= 4.4.1",
       "mysql.data >= 8.0.18",
       "newtonsoft.json >= 12.0.3"
     ]
@@ -4803,6 +4820,12 @@
             "target": "Package",
             "version": "[2.2.0, )",
             "autoReferenced": true
+          },
+          "NuGet.CommandLine": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[4.4.1, )"
           },
           "mysql.data": {
             "target": "Package",

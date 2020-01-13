@@ -2,11 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>ballavamsi</Authors>
+    <Product>Self</Product>
+    <RepositoryUrl>https://github.com/ballavamsi/Json2DB</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="mysql.data" Version="8.0.18" />
     <PackageReference Include="newtonsoft.json" Version="12.0.3" />
+    <PackageReference Include="NuGet.CommandLine" Version="4.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

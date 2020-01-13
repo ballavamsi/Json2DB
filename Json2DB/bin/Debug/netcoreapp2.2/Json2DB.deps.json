@@ -1,13 +1,14 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "67b780669784fbe55901a187aded05ac4cfd59ea"
+    "signature": "aae4d0a7bcb3dead61805ebea6dc6fbbe3489868"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.2": {
       "Json2DB/1.0.0": {
         "dependencies": {
+          "NuGet.CommandLine": "4.4.1",
           "MySql.Data": "8.0.18",
           "Newtonsoft.Json": "12.0.3"
         },
@@ -80,6 +81,7 @@
           }
         }
       },
+      "NuGet.CommandLine/4.4.1": {},
       "runtime.native.System/4.0.0": {},
       "runtime.native.System.Security.Cryptography/4.0.0": {},
       "SSH.NET/2016.1.0": {
@@ -704,6 +706,13 @@
       "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "path": "newtonsoft.json/12.0.3",
       "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "NuGet.CommandLine/4.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-c6HpeBpZx1bwKXUFnZhwlBzzPYcf/ETPxEPeNlh/4s4MAfp8WOqcIuAjTCrARBP6uyZiloukjch8whyzyPDdtQ==",
+      "path": "nuget.commandline/4.4.1",
+      "hashPath": "nuget.commandline.4.4.1.nupkg.sha512"
     },
     "runtime.native.System/4.0.0": {
       "type": "package",

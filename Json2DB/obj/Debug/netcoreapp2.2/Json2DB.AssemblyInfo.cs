@@ -11,11 +11,11 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Json2DB")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("ballavamsi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("Json2DB")]
+[assembly: System.Reflection.AssemblyProductAttribute("Self")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Json2DB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
