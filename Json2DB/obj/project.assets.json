@@ -4753,8 +4753,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.NETCore.App >= 2.2.0",
-      "MySql.Data >= 8.0.18",
-      "Newtonsoft.Json >= 12.0.3"
+      "mysql.data >= 8.0.18",
+      "newtonsoft.json >= 12.0.3"
     ]
   },
   "packageFolders": {
@@ -4764,11 +4764,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vamsi.balla\\source\\repos\\Json2DB\\Json2DB\\Json2DB.csproj",
+      "projectUniqueName": "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj",
       "projectName": "Json2DB",
-      "projectPath": "C:\\Users\\vamsi.balla\\source\\repos\\Json2DB\\Json2DB\\Json2DB.csproj",
+      "projectPath": "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj",
       "packagesPath": "C:\\Users\\vamsi.balla\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vamsi.balla\\source\\repos\\Json2DB\\Json2DB\\obj\\",
+      "outputPath": "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4804,11 +4804,11 @@
             "version": "[2.2.0, )",
             "autoReferenced": true
           },
-          "MySql.Data": {
+          "mysql.data": {
             "target": "Package",
             "version": "[8.0.18, )"
           },
-          "Newtonsoft.Json": {
+          "newtonsoft.json": {
             "target": "Package",
             "version": "[12.0.3, )"
           }
