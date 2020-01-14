@@ -37,7 +37,7 @@ namespace Json2DB
 
         public static void ConvertJsonToParams(ref dynamic dbCommand, JObject input, string spName, string clientid)
         {
-            string FilePath = spModelFolder + clientid + "\\" + _spModelFolder + _spModelFileExt;
+            string FilePath = spModelFolder + clientid + "\\" + spName + _spModelFileExt;
             DataSet ds = new DataSet();
             ds.ReadXml(FilePath);
             DataTable dt = new DataTable();

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Json2DB</id>
+    <version>1.0.0</version>
+    <authors>ballavamsi</authors>
+    <owners>ballavamsi</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <repository url="https://github.com/ballavamsi/Json2DB" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.2">
+        <dependency id="mysql.data" version="8.0.18" exclude="Build,Analyzers" />
+        <dependency id="newtonsoft.json" version="12.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\MyProjects\GitHub\Json2DB\Json2DB\bin\Release\netcoreapp2.2\Json2DB.dll" target="lib\netcoreapp2.2\Json2DB.dll" />
+  </files>
+</package>

@@ -1,0 +1,9 @@
+D:\MyProjects\GitHub\Json2DB\Json2DB\bin\Release\netcoreapp2.2\Json2DB.deps.json
+D:\MyProjects\GitHub\Json2DB\Json2DB\bin\Release\netcoreapp2.2\Json2DB.dll
+D:\MyProjects\GitHub\Json2DB\Json2DB\bin\Release\netcoreapp2.2\Json2DB.pdb
+D:\MyProjects\GitHub\Json2DB\Json2DB\obj\Release\netcoreapp2.2\Json2DB.csprojAssemblyReference.cache
+D:\MyProjects\GitHub\Json2DB\Json2DB\obj\Release\netcoreapp2.2\Json2DB.csproj.CoreCompileInputs.cache
+D:\MyProjects\GitHub\Json2DB\Json2DB\obj\Release\netcoreapp2.2\Json2DB.AssemblyInfoInputs.cache
+D:\MyProjects\GitHub\Json2DB\Json2DB\obj\Release\netcoreapp2.2\Json2DB.AssemblyInfo.cs
+D:\MyProjects\GitHub\Json2DB\Json2DB\obj\Release\netcoreapp2.2\Json2DB.dll
+D:\MyProjects\GitHub\Json2DB\Json2DB\obj\Release\netcoreapp2.2\Json2DB.pdb
