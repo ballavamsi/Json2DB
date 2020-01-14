@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "Json2DB/1.0.0": {
+      "Json2DB/1.0.1": {
         "dependencies": {
           "NuGet.CommandLine": "4.4.1",
           "MySql.Data": "8.0.18",
@@ -667,7 +667,7 @@
     }
   },
   "libraries": {
-    "Json2DB/1.0.0": {
+    "Json2DB/1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

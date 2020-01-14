@@ -6,6 +6,9 @@
     <Authors>ballavamsi</Authors>
     <Product>Self</Product>
     <RepositoryUrl>https://github.com/ballavamsi/Json2DB</RepositoryUrl>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

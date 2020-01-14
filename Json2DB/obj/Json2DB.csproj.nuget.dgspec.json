@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "restore": {
         "projectUniqueName": "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj",
         "projectName": "Json2DB",
