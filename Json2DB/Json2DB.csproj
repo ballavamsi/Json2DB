@@ -1,19 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ballavamsi</Authors>
     <Product>Self</Product>
     <RepositoryUrl>https://github.com/ballavamsi/Json2DB</RepositoryUrl>
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>1.0.0.1</FileVersion>
-    <Version>1.0.1</Version>
+    <Version>2.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="mysql.data" Version="8.0.18" />
-    <PackageReference Include="newtonsoft.json" Version="12.0.3" />
+    <PackageReference Include="newtonsoft.json" Version="13.0.1" />
     <PackageReference Include="NuGet.CommandLine" Version="4.4.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

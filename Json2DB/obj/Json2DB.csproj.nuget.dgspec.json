@@ -1,34 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj": {}
+    "D:\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj": {}
   },
   "projects": {
-    "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj": {
-      "version": "1.0.1",
+    "D:\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj": {
+      "version": "2.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj",
+        "projectUniqueName": "D:\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj",
         "projectName": "Json2DB",
-        "projectPath": "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj",
-        "packagesPath": "C:\\Users\\vamsi.balla\\.nuget\\packages\\",
-        "outputPath": "D:\\MyProjects\\GitHub\\Json2DB\\Json2DB\\obj\\",
+        "projectPath": "D:\\GitHub\\Json2DB\\Json2DB\\Json2DB.csproj",
+        "packagesPath": "C:\\Users\\balla\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\Json2DB\\Json2DB\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\vamsi.balla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\balla\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {}
           }
         },
@@ -39,14 +37,9 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
-            },
             "NuGet.CommandLine": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -59,14 +52,25 @@
             },
             "newtonsoft.json": {
               "target": "Package",
-              "version": "[12.0.3, )"
+              "version": "[13.0.1, )"
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,12 @@
+D:\GitHub\Json2DB\Json2DB\bin\Debug\net5.0\Json2DB.deps.json
+D:\GitHub\Json2DB\Json2DB\bin\Debug\net5.0\Json2DB.dll
+D:\GitHub\Json2DB\Json2DB\bin\Debug\net5.0\ref\Json2DB.dll
+D:\GitHub\Json2DB\Json2DB\bin\Debug\net5.0\Json2DB.pdb
+D:\GitHub\Json2DB\Json2DB\obj\Debug\net5.0\Json2DB.csprojAssemblyReference.cache
+D:\GitHub\Json2DB\Json2DB\obj\Debug\net5.0\Json2DB.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\Json2DB\Json2DB\obj\Debug\net5.0\Json2DB.AssemblyInfoInputs.cache
+D:\GitHub\Json2DB\Json2DB\obj\Debug\net5.0\Json2DB.AssemblyInfo.cs
+D:\GitHub\Json2DB\Json2DB\obj\Debug\net5.0\Json2DB.csproj.CoreCompileInputs.cache
+D:\GitHub\Json2DB\Json2DB\obj\Debug\net5.0\Json2DB.dll
+D:\GitHub\Json2DB\Json2DB\obj\Debug\net5.0\ref\Json2DB.dll
+D:\GitHub\Json2DB\Json2DB\obj\Debug\net5.0\Json2DB.pdb

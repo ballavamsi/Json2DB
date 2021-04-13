@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace Json2DB
@@ -92,60 +94,52 @@ namespace Json2DB
             }
         }
 
-        public static void ConvertJsonToParams2(ref dynamic dbCommand, JObject input, string spName, string clientid)
+        public static void ConvertJsonToParams2(ref dynamic dbCommand, JObject input, List<ObjectMapping> objectMappings, string clientid)
         {
-            string FilePath = spModelFolder + clientid + "\\" + _spModelFolder + _spModelFileExt;
-            DataSet ds = new DataSet();
-            ds.ReadXml(FilePath);
-            DataTable dt = new DataTable();
-            if (ds.Tables.Count > 0)
-                dt = ds.Tables[0];
-            foreach (DataRow dr in dt.Rows)
+            foreach (var item in objectMappings.Where(x=> x.ObjectNumber == 1).ToList())
             {
-                if (dt.Columns.Contains("ParameterName"))
+                if(item.DBParameterName != string.Empty)
                 {
-                    string ParameterName = "@" + Convert.ToString(dr["ParameterName"]);
-                    string valueName = Convert.ToString(dr["valueName"]);
-
+                    string DBParamName = item.DBParameterName;
+                    string APIParamName = item.APIParamName;
                     string objType = string.Empty;
 
-                    if (dt.Columns.Contains("objType"))
-                        objType = Convert.ToString(dr["objType"]);
+                    if (!string.IsNullOrEmpty(item.ObjectName))
+                        objType = item.ObjectName;
 
                     dynamic convertedValue;
 
-                    if (string.IsNullOrEmpty(objType))
+                    if (item.ChildObjectNumber == 0)
                     {
-                        if (!String.IsNullOrEmpty(Convert.ToString(dr["DbType"])))
-                            convertedValue = ConvertType(Convert.ToString(dr["DbType"]), input[valueName]);
+                        if (!string.IsNullOrEmpty(item.DbType))
+                            convertedValue = ConvertType(item.DbType, input[APIParamName]);
                         else
-                            convertedValue = Convert.ToString(input[valueName]);
+                            convertedValue = Convert.ToString(input[APIParamName]);
                     }
                     else
                     {
                         if (objType.ToUpper().EndsWith("_SINGLE"))
-                            convertedValue = GetSingleXMLFormat(ds, objType, valueName, (JObject)input[valueName]);
+                            convertedValue = GetSingleXMLFormat2(objectMappings, item.ChildObjectNumber, APIParamName, (JObject)input[APIParamName]);
                         else if (objType.ToUpper().EndsWith("_MULTI"))
-                            convertedValue = GetXMLFormat(ds, objType, valueName, (JArray)input[valueName]);
+                            convertedValue = GetXMLFormat2(objectMappings, item.ChildObjectNumber, APIParamName, (JArray)input[APIParamName]);
                         else
-                            convertedValue = Convert.ToString(input[valueName]);
+                            convertedValue = Convert.ToString(input[APIParamName]);
                     }
 
 
-                    if (Convert.ToString(dr["AddWithValue"]) == "1")
+                    if (Convert.ToString(item.Direction).ToUpper().Equals("IN"))
                     {
-                        dbCommand.Parameters.AddWithValue(ParameterName, convertedValue);
+                        dbCommand.Parameters.AddWithValue(DBParamName, convertedValue);
                     }
                     else
                     {
                         dynamic d = GetDBTypeObject();
-                        d = GetDbType(Convert.ToString(dr["DbType"]).ToLower());
-                        dbCommand.Parameters.Add(ParameterName, d);
-                        if (Convert.ToString(dr["Direction"]).Equals("Out"))
-                            dbCommand.Parameters[ParameterName].Direction = ParameterDirection.Output;
+                        d = GetDbType(Convert.ToString(item.DbType).ToLower());
+                        dbCommand.Parameters.Add(DBParamName, d);
+                        if (Convert.ToString(item.Direction).ToUpper().Equals("OUT"))
+                            dbCommand.Parameters[DBParamName].Direction = ParameterDirection.Output;
                     }
                 }
-
             }
         }
 
@@ -282,24 +276,30 @@ namespace Json2DB
             {
 
                 if (!String.IsNullOrEmpty(dbType))
-                    switch (Convert.ToString(dbType))
+                    switch (Convert.ToString(dbType).ToLower())
                     {
-                        case "Int64":
-                            convertedValue = Convert.ToInt64(value);
-                            break;
-                        case "Int16":
-                            convertedValue = Convert.ToInt16(value);
-                            break;
-                        case "Int32":
+                        case "int" or "int32":
                             convertedValue = Convert.ToInt32(value);
                             break;
-                        case "String":
+                        case "int64":
+                            convertedValue = Convert.ToInt64(value);
+                            break;
+                        case "int16":
+                            convertedValue = Convert.ToInt16(value);
+                            break;
+                        case "double":
+                            convertedValue = Convert.ToDouble(value);
+                            break;
+                        case "decimal":
+                            convertedValue = Convert.ToDecimal(value);
+                            break;
+                        case "string" or "varchar" or "nvarchar":
                             convertedValue = Convert.ToString(value);
                             break;
-                        case "DateTime":
+                        case "datetime":
                             convertedValue = Convert.ToDateTime(value);
                             break;
-                        case "Boolean":
+                        case "boolean":
                             convertedValue = Convert.ToBoolean(value);
                             break;
                         default:
@@ -383,6 +383,89 @@ namespace Json2DB
                         convertedValue = GetSingleXMLFormat(ds, objType, valueName, (JObject)j[valueName]);
                     else if (objType.ToUpper().EndsWith("_MULTI"))
                         convertedValue = GetXMLFormat(ds, objType, valueName, (JArray)j[valueName]);
+                    else if (!string.IsNullOrEmpty(dbType))
+                        convertedValue = ConvertType(dbType, j[valueName]);
+                    else
+                        convertedValue = Convert.ToString(j[valueName]);
+                }
+                else
+                    convertedValue = Convert.ToString(j[valueName]);
+
+                if (string.IsNullOrEmpty(objType))
+                {
+                    str.AppendLine("<field name='" + paramName + "'><![CDATA[" + convertedValue + "]]></field>");
+                }
+            }
+            str.Append("</" + objName + ">");
+
+            return str.ToString();
+        }
+
+
+        private static string GetXMLFormat2(List<ObjectMapping> objectMappings, int childObjectNumber, string objName, JArray j)
+        {
+            StringBuilder str = new StringBuilder();
+            var data = objectMappings.Where(x => x.ObjectNumber == childObjectNumber);
+            str.Append("<" + objName + "_list>");
+
+
+            foreach (var item in j)
+            {
+                str.Append("<" + objName + ">");
+                foreach (var eachParam in data)
+                {
+                    string valueName = eachParam.APIParamName;// Convert.ToString(dr["valueName"]);
+                    string paramName = eachParam.DBParameterName; //Convert.ToString(dr["ParameterName"]);
+                    string dbType = eachParam.DbType; //Convert.ToString(dr["DbType"]);
+                    string objType = string.Empty;
+                    if (!string.IsNullOrEmpty(eachParam.ObjectName))
+                        objType = eachParam.ObjectName;
+
+                    if (eachParam.ChildObjectNumber != 0)
+                    {
+                        if (objType.ToUpper().EndsWith("_SINGLE"))
+                            item[valueName] = GetSingleXMLFormat2(objectMappings, eachParam.ChildObjectNumber, valueName, (JObject)j[valueName]);
+                        else if (objType.ToUpper().EndsWith("_MULTI"))
+                            item[valueName] = GetXMLFormat2(objectMappings, eachParam.ChildObjectNumber, valueName, (JArray)item[valueName]);
+                        else if (!string.IsNullOrEmpty(dbType))
+                            item[valueName] = ConvertType(dbType, item[valueName]);
+                        //else
+                        //    item[valueName] = item[valueName]; 
+                    }
+
+
+                    //if (string.IsNullOrEmpty(objType))
+                    //{
+                    str.AppendLine("<field name=\"" + paramName + "\"><![CDATA[" + item[valueName] + "]]></field>");
+                    //}
+                }
+                str.Append("</" + objName + ">");
+            }
+            str.AppendLine("</" + objName + "_list>");
+            return str.ToString();
+        }
+
+        private static string GetSingleXMLFormat2(List<ObjectMapping> objectMappings, int childObjectNumber, string objName, JObject j)
+        {
+            StringBuilder str = new StringBuilder();
+            var data = objectMappings.Where(x => x.ObjectNumber == childObjectNumber);
+            str.Append("<" + objName + ">");
+            foreach (var eachParam in data)
+            {
+                string valueName = eachParam.APIParamName;// Convert.ToString(dr["valueName"]);
+                string paramName = eachParam.DBParameterName; //Convert.ToString(dr["ParameterName"]);
+                string dbType = eachParam.DbType; //Convert.ToString(dr["DbType"]);
+                string objType = string.Empty;
+                if (!string.IsNullOrEmpty(eachParam.ObjectName))
+                    objType = eachParam.ObjectName;
+
+                dynamic convertedValue;
+                if (eachParam.ChildObjectNumber != 0)
+                {
+                    if (objType.ToUpper().EndsWith("_SINGLE"))
+                        convertedValue = GetSingleXMLFormat2(objectMappings, eachParam.ChildObjectNumber, valueName, (JObject)j[valueName]);
+                    else if (objType.ToUpper().EndsWith("_MULTI"))
+                        convertedValue = GetXMLFormat2(objectMappings, eachParam.ChildObjectNumber, valueName, (JArray)j[valueName]);
                     else if (!string.IsNullOrEmpty(dbType))
                         convertedValue = ConvertType(dbType, j[valueName]);
                     else
